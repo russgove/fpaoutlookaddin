@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "13232b81-83b1-4b80-8b11-2b00f3b72a71",
+  "alias": "FpaOutlookAddinWebPart",
+  "componentType": "WebPart",
+  "version": "*", // The "*" signifies that the version should be taken from the package.json
+  "manifestVersion": 2,
+
+  /**
+   * This property should only be set to true if it is certain that the webpart does not
+   *  allow arbitrary scripts to be called
+   */
+  "safeWithCustomScriptDisabled": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "13232b81-83b1-4b80-8b11-2b00f3b72a71",
+    "group": { "default": "Under Development" },
+    "title": { "default": "FPAOutlookAddin" },
+    "description": { "default": "Add-in to create an FPA request from an email" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "FPAOutlookAddin"
+    }
+  }]
+}

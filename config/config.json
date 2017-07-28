@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/fpaOutlookAddin/FpaOutlookAddinWebPart.js",
+      "manifest": "./src/webparts/fpaOutlookAddin/FpaOutlookAddinWebPart.manifest.json",
+      "outputPath": "./dist/fpa-outlook-addin.bundle.js"
+    }
+  ],
+  "externals": {
+     "office":"https://appsforoffice.microsoft.com/lib/1/hosted/Office.js"
+     
+
+  },
+  "localizedResources": {
+    "fpaOutlookAddinStrings": "webparts/fpaOutlookAddin/loc/{locale}.js"
+  }
+}

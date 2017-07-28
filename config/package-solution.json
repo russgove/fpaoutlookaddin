@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "fpa-outlook-addin-client-side-solution",
+    "id": "41906236-6ced-4f93-a51d-97c17be852f4",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/fpa-outlook-addin.sppkg"
+  }
+}
