@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import * as pnp from "sp-pnp-js";
-import { IFPADropdownData } from "./DataModel";
+import { IFPADropdownData, ILookupField } from "./DataModel";
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
@@ -44,68 +44,99 @@ export default class FpaOutlookAddinWebPart extends BaseClientSideWebPart<IFpaOu
 
   }
   public getDropdownData(): Promise<IFPADropdownData> {
-    let region: Array<string>;
-    let contactLocation: Array<string>;
-    let states: Array<string>;
-    let countries: Array<string>;
-    let affectedProducts: Array<string>;
-    let applicationTypes: Array<string>;
+    let region: Array<ILookupField>;
+    let contactLocation: Array<ILookupField>;
+    let states: Array<ILookupField>;
+    let countries: Array<ILookupField>;
+    let affectedProducts: Array<ILookupField>;
+    let applicationTypes: Array<ILookupField>;
     let batch = pnp.sp.createBatch();
     pnp.sp.web.lists.getByTitle("Applications").items.inBatch(batch).get().then((items) => {
       debugger;
       applicationTypes = items.map((item) => {
-        return item.Title
+        return {
+          key: item.Id,
+          text: item.Application_Name
+        }
       })
-    }).catch((error) => {
-      console.log("error fetching applictaions");
-      console.log(error);
-    });
+    })
+      .catch((error) => {
+        console.log("error fetching applictaions");
+        console.log(error);
+      });
+
+
     pnp.sp.web.lists.getByTitle("Countries").items.inBatch(batch).get().then((items) => {
       debugger;
       countries = items.map((item) => {
-        return item.Title
+        return  {
+          key: item.Id,
+          text: item.Title
+        }
       })
-    }).catch((error) => {
-      console.log("error fetching Countries");
-      console.log(error);
-    });
+    })
+      .catch((error) => {
+        console.log("error fetching Countries");
+        console.log(error);
+      });
+
     pnp.sp.web.lists.getByTitle("Products").items.inBatch(batch).get().then((items) => {
       debugger;
       affectedProducts = items.map((item) => {
-        return item.Title
+        return {
+          key: item.Id,
+          text:  item.Title
+        }
       })
-    }).catch((error) => {
-      console.log("error fetching Products");
-      console.log(error);
-    });
+    })
+      .catch((error) => {
+        console.log("error fetching Products");
+        console.log(error);
+      });
+
+
     pnp.sp.web.lists.getByTitle("States").items.inBatch(batch).get().then((items) => {
       debugger;
       states = items.map((item) => {
-        return item.Title
+        return  {
+          key: item.Id,
+          text: item.Title
+        }
       })
-    }).catch((error) => {
-      console.log("error fetching States");
-      console.log(error);
-    });
+    })
+      .catch((error) => {
+        console.log("error fetching States");
+        console.log(error);
+      });
 
     pnp.sp.web.lists.getByTitle("Request Regions").items.inBatch(batch).get().then((items) => {
       debugger;
       region = items.map((item) => {
-        return item.Title
+        return  {
+          key: item.Id,
+          text: item.Title
+        }
       })
-    }).catch((error) => {
-      console.log("error fetching Request Regions");
-      console.log(error);
-    });
+    })
+      .catch((error) => {
+        console.log("error fetching Request Regions");
+        console.log(error);
+      });
+
+
     pnp.sp.web.lists.getByTitle("Contact Locations").items.inBatch(batch).get().then((items) => {
       debugger;
       contactLocation = items.map((item) => {
-        return item.Title
+        return  {
+          key: item.Id,
+          text: item.Title
+        }
       })
-    }).catch((error) => {
-      console.log("error fetching ontact Locations");
-      console.log(error);
-    });
+    })
+      .catch((error) => {
+        console.log("error fetching ontact Locations");
+        console.log(error);
+      });
 
     return batch.execute().then(() => {
       let dropdownData: IFPADropdownData = {

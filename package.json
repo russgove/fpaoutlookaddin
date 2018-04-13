@@ -16,6 +16,7 @@
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
     "office-js": "^0.1.0",
+    "office-ui-fabric-react": "^4.25.1",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "sp-pnp-js": "^2.0.7"
